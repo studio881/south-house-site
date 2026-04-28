@@ -382,14 +382,25 @@
       btn.disabled = true;
       btn.textContent = 'Subscribing...';
 
-      // TODO: Replace with Mailchimp API call when account is ready
-      // Simulate success for preview
-      setTimeout(() => {
+      try {
+        await fetch('https://script.google.com/macros/s/AKfycbx4lPtdO5sRImBPwfnjc8dI8SnS2dcSHTxw1yocfUJyFleJ8Kq52XXAyGiWaW3pkHuRgw/exec', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, type: 'Newsletter' })
+        });
+        
         msg.style.color = '#4ade80';
         msg.textContent = "You're on the list! Thanks for subscribing.";
         this.reset();
         btn.textContent = 'Done!';
-      }, 600);
+      } catch (err) {
+        console.error(err);
+        msg.style.color = '#e06b88';
+        msg.textContent = 'Something went wrong. Please try again.';
+        btn.disabled = false;
+        btn.textContent = 'Subscribe';
+      }
     });
   </script>
 
