@@ -1,180 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us — South House</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    .about-page {
-      position: relative;
-      min-height: 100vh;
-      background: var(--bg);
-      overflow: hidden;
-    }
-
-    .about-page .bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.25;
-      z-index: -1;
-    }
-
-    .about-page .page-content {
-      position: relative;
-      z-index: 1;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — South House</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="about-page">
-    <video class="bg-video" autoplay muted loop playsinline>
-      <source src="assets/entrance-video-web.mp4" type="video/mp4">
-    </video>
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="entrance-video-web.mp4" type="video/mp4" />
+  </video>
 
-    <header class="top-bar">
-      <div class="logo-container">
-        <a href="index.html">
-          <img src="assets/sh-logo-diamond.png" alt="South House" class="logo">
+  <header class="mobile-nav-header">
+    <a href="index.html" class="mobile-logo-link">
+      <img src="assets/sh-logo-diamond.png" alt="South House" class="mobile-logo" />
+    </a>
+    <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+  </header>
+
+  <nav class="mobile-dropdown" id="mobileDropdown">
+    <a href="events.html#tickets">EVENTS</a>
+    <a href="index.html">WIN TICKETS</a>
+    <a href="about.html" class="active">ABOUT US</a>
+  </nav>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <header class="logo-header">
+        <a href="index.html" class="logo-spin-link" aria-label="South House">
+          <span class="logo-face logo-front">
+            <img src="assets/sh-logo-diamond.png" alt="" class="avatar" width="100" height="100" loading="lazy" />
+          </span>
         </a>
-      </div>
-      <nav class="nav-links desktop-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="events.html" class="nav-link">Events</a>
-        <a href="about.html" class="nav-link active">About</a>
-        <a href="signup.html" class="nav-link">Sign Up</a>
+      </header>
+      <nav class="side-nav">
+        <a href="events.html#tickets">EVENTS</a>
+        <a href="index.html">WIN TICKETS</a>
+        <a href="about.html" class="active">ABOUT US</a>
       </nav>
-      <button class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </header>
+    </aside>
 
-    <div id="mobile-menu" class="mobile-menu hidden">
-      <nav class="mobile-nav">
-        <a href="index.html" class="mobile-link">Home</a>
-        <a href="events.html" class="mobile-link">Events</a>
-        <a href="about.html" class="mobile-link active">About</a>
-        <a href="signup.html" class="mobile-link">Sign Up</a>
-      </nav>
-    </div>
+    <main class="main-content">
+      <div class="page">
+        <div class="about-hero">
+          <img src="assets/sh-logo-diamond.png" alt="South House" class="about-hero-logo" />
+          <h1 class="about-hero-title">South House</h1>
+          <p class="about-hero-sub">Brooklyn · Est. NYC 2024</p>
+        </div>
 
-    <main class="page-content">
-      <div class="main-container">
-        <div class="about-content">
-          <div class="about-hero">
-            <img src="assets/sh-logo-diamond.png" alt="South House" class="about-hero-logo">
-            <h1 class="about-hero-title">SOUTH HOUSE</h1>
-            <p class="about-hero-sub">WHERE SOUTHERN HOSPITALITY MEETS NYC ENERGY</p>
-          </div>
+        <section class="about-copy">
+          <p>
+            South House is a Brooklyn-based party series and creative collective that blends Southern hospitality with NYC's electric energy. We bring together music, fashion, and film people for immersive events that feel intimate, cinematic, and unmistakably ours.
+          </p>
+          <p>
+            Each gathering features live vocals, DJs, and collaborators from the South and beyond. We drop limited merch, build a community space, and invite guests to feel at home while dancing until sunrise.
+          </p>
+        </section>
 
-          <div class="about-copy">
-            <h2>About Us</h2>
-            <p>South House is a premier lifestyle brand bridging the gap between Southern charm and New York City edge. Founded in 2024, we curate unforgettable experiences that celebrate community, culture, and creativity.</p>
-            <p>Our flagship events blend live music, art, and dining into immersive experiences that feel both intimate and electric. From rooftop sessions to full floor takeovers, every event is designed to leave an impression.</p>
-          </div>
-
+        <section class="ig-section">
+          <h2 class="ig-section-title">Find Us Online</h2>
           <div class="social-grid">
-            <a href="https://www.instagram.com/southhousenyc/" target="_blank" class="social-card">
-              <div class="social-card__icon">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            <a class="social-card" href="https://www.instagram.com/southhousenyc/" target="_blank" rel="noopener">
+              <span class="social-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                 </svg>
-              </div>
-              <div>
+              </span>
+              <span>
                 <span class="social-card__label">Instagram</span>
                 <span class="social-card__handle">@southhousenyc</span>
-              </div>
+              </span>
             </a>
-            <a href="https://www.tiktok.com/@southhousenyc" target="_blank" class="social-card">
-              <div class="social-card__icon">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+            <a class="social-card" href="https://www.tiktok.com/@southhousenyc" target="_blank" rel="noopener">
+              <span class="social-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" />
                 </svg>
-              </div>
-              <div>
+              </span>
+              <span>
                 <span class="social-card__label">TikTok</span>
                 <span class="social-card__handle">@southhousenyc</span>
-              </div>
+              </span>
+            </a>
+            <a class="social-card" href="https://open.spotify.com/playlist/2k4YPonD9Z8ZdRkotVb87u" target="_blank" rel="noopener">
+              <span class="social-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+                  <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+                </svg>
+              </span>
+              <span>
+                <span class="social-card__label">Spotify</span>
+                <span class="social-card__handle">South House Radio</span>
+              </span>
             </a>
           </div>
+        </section>
 
-          <div class="about-copy">
-            <h2>Live Photos</h2>
-          </div>
+        <section class="ig-section">
+          <h2 class="ig-section-title">Latest on Instagram</h2>
+          <div id="ig-feed"></div>
+        </section>
 
-          <div class="instagram-feed" id="instagram-feed">
-            <script src="https://snapwidget.io/js/embed.js"></script>
-          </div>
+        <section class="about-signup-section">
+          <h2 class="about-signup-title">Stay in the Loop</h2>
+          <p class="about-signup-text">Get event alerts, first dibs on drops, and the next South House invite.</p>
+          <form id="aboutSignupForm" class="about-signup-row">
+            <input type="text" name="name" class="signup-input" placeholder="Name" required autocomplete="name" />
+            <input type="email" name="email" class="signup-input" placeholder="Email" required autocomplete="email" />
+            <button type="submit" class="signup-submit about-signup-btn">Send</button>
+          </form>
+          <div id="about-signup-msg" role="status" aria-live="polite" style="margin-top:1rem; font-weight:600;"></div>
+        </section>
 
-          <div class="about-copy">
-            <h2>Press & Features</h2>
-            <p>South House has been featured in various publications and platforms celebrating the fusion of Southern culture and urban nightlife. Our events regularly draw diverse crowds from across the city and beyond.</p>
+        <footer class="about">
+          <div class="footer-logos">
+            <a href="index.html" class="footer-logo">HOME</a>
+            <a href="https://www.instagram.com/southhousenyc/" class="footer-logo" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@southhousenyc" class="footer-logo" target="_blank" rel="noopener" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+            </a>
           </div>
-        </div>
+        </footer>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <img src="assets/sh-logo-diamond.png" alt="South House" style="width: 40px; height: 40px; object-fit: contain;">
-        </div>
-        <nav class="footer-nav">
-          <a href="index.html" class="footer-link">Home</a>
-          <a href="events.html" class="footer-link">Events</a>
-          <a href="about.html" class="footer-link">About</a>
-          <a href="signup.html" class="footer-link">Sign Up</a>
-        </nav>
-        <div class="footer-socials">
-          <a href="https://www.instagram.com/southhousenyc/" target="_blank" class="social-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-          </a>
-          <a href="https://www.tiktok.com/@southhousenyc" target="_blank" class="social-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-              <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </footer>
   </div>
 
   <script>
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
+    function toggleMenu() {
+      const dropdown = document.getElementById('mobileDropdown');
+      const toggle = document.querySelector('.menu-toggle');
+      dropdown.classList.toggle('open');
+      toggle.textContent = dropdown.classList.contains('open') ? 'Close' : 'Menu';
+    }
 
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      hamburger.classList.toggle('active');
-    });
+    const aboutForm = document.getElementById('aboutSignupForm');
+    if (aboutForm) {
+      aboutForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const msg = document.getElementById('about-signup-msg');
+        const submitBtn = aboutForm.querySelector('button[type="submit"]');
+        const payload = {
+          name: aboutForm.name.value.trim(),
+          email: aboutForm.email.value.trim(),
+          type: 'Newsletter'
+        };
 
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        hamburger.classList.remove('active');
+        if (!payload.name || !payload.email) {
+          msg.textContent = 'Please fill in both name and email.';
+          msg.style.color = '#e06b88';
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        fetch('https://script.google.com/macros/s/AKfycbx4lPtdO5sRImBPwfnjc8dI8SnS2dcSHTxw1yocfUJyFleJ8Kq52XXAyGiWaW3pkHuRgw/exec', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then((res) => res.text())
+          .then(() => {
+            msg.textContent = "You're on the list!";
+            msg.style.color = '#4ade80';
+            aboutForm.reset();
+            submitBtn.textContent = 'Sent';
+            setTimeout(() => {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Send';
+            }, 1600);
+          })
+          .catch(() => {
+            msg.textContent = 'Try again soon.';
+            msg.style.color = '#e06b88';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send';
+          });
       });
-    });
+    }
 
-    window.snapkit = {
-      websitename: 'southhousenyc',
-      items: 6,
-      columns: 3,
-      rows: 2,
-      showinfo: true,
-      stylepreset: 'instagram'
-    };
+    (function renderIgFeed() {
+      const container = document.getElementById('ig-feed');
+      const widget = document.createElement('iframe');
+      widget.src = 'https://snapwidget.com/embed/1102299';
+      widget.className = 'ig-post-embed';
+      widget.title = 'South House on Instagram';
+      widget.loading = 'lazy';
+      widget.allowFullscreen = true;
+      widget.setAttribute('frameborder', '0');
+      widget.style = 'width:100%; min-height:360px; border:none; overflow:hidden; border-radius: var(--radius);';
+      container.appendChild(widget);
+    })();
   </script>
-  <script src="https://snapwidget.io/embed.js"></script>
 </body>
 </html>
