@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join the List — South House</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ── MOBILE BOTTOM NAV ─────────────────────────────────── -->
+  <nav class="mobile-nav" aria-label="Main navigation">
+    <a href="events.html#tickets">EVENTS</a>
+    <a href="https://www.southernyankee.us/" target="_blank" rel="noopener">PHOTOS</a>
+    <a href="https://www.youtube.com/@SouthernYankeeNYC" target="_blank" rel="noopener">TV</a>
+    <a href="https://www.southernyankee.us/shop" target="_blank" rel="noopener">CLOTHING</a>
+    <a href="home.html">WIN TICKETS</a>
+    <a href="about.html">ABOUT US</a>
+    <a href="mailto:southyanks@gmail.com">CONTACT</a>
+  </nav>
+
+  <div class="layout">
+
+    <!-- ── SIDEBAR (desktop) ─────────────────────────────────── -->
+    <aside class="sidebar">
+      <header class="logo-header">
+        <a href="home.html" class="logo-spin-link" aria-label="South House">
+          <span class="logo-face logo-front"><img src="assets/sh-logo-diamond.png" alt="" class="avatar" width="100" height="100" loading="lazy"></span>
+          <span class="logo-face logo-back"><img src="assets/sh-logo-diamond.png" alt="" class="avatar" width="100" height="100" loading="lazy"></span>
+        </a>
+      </header>
+      <nav class="side-nav">
+        <a href="events.html#tickets">EVENTS</a>
+        <a href="https://www.southernyankee.us/" target="_blank" rel="noopener">PHOTOS</a>
+        <a href="https://www.youtube.com/@SouthernYankeeNYC" target="_blank" rel="noopener">TV</a>
+        <a href="https://www.southernyankee.us/shop" target="_blank" rel="noopener">CLOTHING</a>
+        <a href="home.html">WIN TICKETS</a>
+        <a href="about.html">ABOUT US</a>
+        <a href="mailto:southyanks@gmail.com">CONTACT</a>
+      </nav>
+    </aside>
+
+    <!-- ── MAIN CONTENT ──────────────────────────────────────── -->
+    <div class="main-content">
+      <div class="signup-wrap">
+        <h1 class="signup-title">Join the List</h1>
+        <p class="signup-text">Be first to know about South House events, drops, and exclusives.</p>
+
+        <form class="signup-form" id="signupForm" novalidate>
+          <label class="signup-label" for="name">Name</label>
+          <input class="signup-input" type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
+
+          <label class="signup-label" for="email">Email</label>
+          <input class="signup-input" type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+
+          <button class="signup-submit" type="submit">Sign Me Up</button>
+        </form>
+
+        <div id="signup-msg" role="alert" aria-live="polite" style="margin-top: 1.25rem; font-size: 1rem; font-weight: 700; text-align: center;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const msg = document.getElementById('signup-msg');
+      const btn = this.querySelector('button[type="submit"]');
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      if (!name || !email) {
+        msg.style.color = '#e06b88';
+        msg.textContent = 'Please fill in both fields.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Signing up...';
+
+      // TODO: Replace with Mailchimp API call when account is ready
+      // Simulate success for preview
+      setTimeout(() => {
+        msg.style.color = '#4ade80';
+        msg.textContent = "You're on the list! See you at the next one.";
+        this.reset();
+        btn.textContent = 'Done!';
+      }, 600);
+    });
+  </script>
+
+</body>
+</html>

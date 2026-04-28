@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>South House</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+
+    video {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Centered "Click to Enter" link */
+    .enter-link {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      font-family: 'Anton', monospace;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.85);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+      padding-bottom: 3px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .enter-link:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Sign Up button at the bottom */
+    .signup-container {
+      position: fixed;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .signup-btn {
+      display: inline-block;
+      padding: 0.85rem 2.25rem;
+      font-family: 'Anton', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .signup-btn:hover {
+      border-color: rgba(255, 255, 255, 0.95);
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Fallback if video fails */
+    .fallback {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #000;
+      color: #fff;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      font-family: 'Anton', monospace;
+      z-index: 3;
+    }
+    .fallback.show { display: flex; }
+    .fallback h2 { margin-bottom: 1rem; font-size: 1.25rem; }
+    .fallback p  { color: #999; font-size: 0.95rem; max-width: 320px; line-height: 1.5; margin-bottom: 0.5rem; }
+    .fallback a  { color: #c94d6a; margin-top: 1rem; }
+
+    @media (max-width: 600px) {
+      .enter-link { font-size: 0.95rem; }
+      .signup-container { bottom: 2rem; }
+      .signup-btn { padding: 0.75rem 1.75rem; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <video id="vid" autoplay muted loop playsinline>
+    <source src="entrance-video-web.mp4" type="video/mp4">
+  </video>
+
+  <!-- Centered click to enter -->
+  <a href="home.html" class="enter-link" aria-label="Enter South House">Click to Enter</a>
+
+  <!-- Sign Up button at the bottom -->
+  <div class="signup-container">
+    <a href="signup.html" class="signup-btn">Sign Up</a>
+  </div>
+
+  <div class="fallback" id="fallback">
+    <h2>Video couldn't load</h2>
+    <p>Please <a href="home.html">enter the site</a> to continue.</p>
+  </div>
+
+  <script>
+    (function() {
+      var v = document.getElementById('vid');
+      var fallback = document.getElementById('fallback');
+
+      v.muted = true;
+      v.playsInline = true;
+      v.setAttribute('playsinline', '');
+      v.setAttribute('webkit-playsinline', '');
+
+      function tryPlay() {
+        v.muted = true;
+        v.play().catch(function() {});
+      }
+
+      v.addEventListener('loadedmetadata', tryPlay);
+      v.addEventListener('loadeddata', tryPlay);
+      v.addEventListener('canplay', tryPlay);
+      v.addEventListener('canplaythrough', tryPlay);
+      v.addEventListener('error', function() { fallback.classList.add('show'); });
+
+      tryPlay();
+      setTimeout(tryPlay, 100);
+      setTimeout(tryPlay, 500);
+    })();
+  </script>
+</body>
+</html>
