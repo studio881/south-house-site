@@ -7,15 +7,15 @@
  *
  * To update these values:
  *   1. Log in to https://sanity.io/manage
- *   2. Select the "South House" project (ID: t3aexvm4)
+ *   2. Select the "South House" project (ID: g803p2v0)
  *   3. Go to API → Tokens to manage tokens
  *   4. Go to API → CORS Origins to add your production domain
  */
 
 window.SANITY_CONFIG = {
-  projectId: 't3aexvm4',
+  projectId: 'g803p2v0',
   dataset: 'production',
   apiVersion: '2024-01-01',
   // Read-only viewer token — safe to expose in static sites
-  token: 'sk9cDbbcVnz9xGkj4uOxcEMeiYcgAGsDtnsxMEkdMP1L4gMcB778yQwO3YoYMlO67VgnnaUECx3O5isbsfswm6a4RySpta352rGfFYIC84JHPEVupeEpRKb48eJ0YKbQnAXnMIgttBYAws31v6qpaPFOdfjiw5wk04RixOgFNGAbTLs29d4C',
+  token: 'skKsjXoDSTBNIHK5wpakiizgj1NsINNOdW5KyjVZ8y0BNhMiAzzE4c6O5l4geY6EDx240DzA1SDxdpHLk4jY4gGHt5aiYJb5KbUhs7sLnPIygXca886RcP0YeATThr6nXpb2kkD67Bp0xW7zTUaE9p6rKaDyVVLqlYWVuMw3eR3OghbGvbD6',
 };
