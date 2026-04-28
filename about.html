@@ -129,7 +129,9 @@
 
         <section class="ig-section">
           <h2 class="ig-section-title">Latest on Instagram</h2>
-          <div id="ig-feed"></div>
+          <div class="ig-embed">
+            <iframe src="https://snapwidget.com/embed/17877816027189259" class="ig-post-embed" title="South House Instagram" loading="lazy" allowtransparency="true" frameborder="0"></iframe>
+          </div>
         </section>
 
         <section class="about-signup-section">
@@ -212,18 +214,6 @@
       });
     }
 
-    (function renderIgFeed() {
-      const container = document.getElementById('ig-feed');
-      const widget = document.createElement('iframe');
-      widget.src = 'https://snapwidget.com/embed/1102299';
-      widget.className = 'ig-post-embed';
-      widget.title = 'South House on Instagram';
-      widget.loading = 'lazy';
-      widget.allowFullscreen = true;
-      widget.setAttribute('frameborder', '0');
-      widget.style = 'width:100%; min-height:360px; border:none; overflow:hidden; border-radius: var(--radius);';
-      container.appendChild(widget);
-    })();
   </script>
 </body>
 </html>
