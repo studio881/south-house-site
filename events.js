@@ -65,7 +65,7 @@
       const featured = events.filter(function (e) { return e.status === 'featured'; });
       const archived = events.filter(function (e) { return e.status === 'archived'; });
 
-      if (featured.length > 0) renderFeatured(featured[0]);
+      if (featured.length > 0) renderFeatured(featured.slice(0, 10));
       else clearZone('featured-events-zone', 'No featured events at the moment.');
 
       if (archived.length > 0) renderArchive(archived);
@@ -78,41 +78,45 @@
     });
 
   // ── Render: Featured Event ────────────────────────────────────────────────
-  function renderFeatured(event) {
+  function renderFeatured(events) {
     const container = document.getElementById('featured-events-zone');
     if (!container) return;
 
-    const imgSrc = imageUrl(event.coverImage, 900);
-    const dateStr = formatDate(event.eventDate);
-    const metaParts = [];
-    if (dateStr) metaParts.push(dateStr);
-    if (event.location) metaParts.push(event.location);
-    const meta = metaParts.join(' · ') || 'Upcoming';
+    container.innerHTML = events.map(function(event) {
+      const imgSrc = imageUrl(event.coverImage, 900);
+      const dateStr = formatDate(event.eventDate);
+      const metaParts = [];
+      if (dateStr) metaParts.push(dateStr);
+      if (event.location) metaParts.push(event.location);
+      const meta = metaParts.join(' · ') || 'Upcoming';
 
-    const link = event.rsvpLink || event.infoLink || null;
+      const link = event.rsvpLink || event.infoLink || null;
 
-    if (link) {
-      container.innerHTML =
-        '<a href="' + escHtml(link) + '" target="_blank" rel="noopener" class="event-card-featured">' +
-          (imgSrc ? '<img src="' + escHtml(imgSrc) + '" alt="' + escHtml(event.title) + '" class="event-card-featured__image">' : '') +
-          '<div class="event-card-featured__body">' +
-            '<h3 class="event-card-featured__title">' + escHtml(event.title) + '</h3>' +
-            '<div class="event-card-featured__meta">' + meta + '</div>' +
-            (event.description ? '<p class="event-card-featured__description">' + escHtml(event.description) + '</p>' : '') +
-            '<span class="event-card-featured__cta">Get Tickets →</span>' +
-          '</div>' +
-        '</a>';
-    } else {
-      container.innerHTML =
-        '<div class="event-card-featured">' +
-          (imgSrc ? '<img src="' + escHtml(imgSrc) + '" alt="' + escHtml(event.title) + '" class="event-card-featured__image">' : '') +
-          '<div class="event-card-featured__body">' +
-            '<h3 class="event-card-featured__title">' + escHtml(event.title) + '</h3>' +
-            '<div class="event-card-featured__meta">' + meta + '</div>' +
-            (event.description ? '<p class="event-card-featured__description">' + escHtml(event.description) + '</p>' : '') +
-          '</div>' +
-        '</div>';
-    }
+      if (link) {
+        return (
+          '<a href="' + escHtml(link) + '" target="_blank" rel="noopener" class="event-card-featured">' +
+            (imgSrc ? '<img src="' + escHtml(imgSrc) + '" alt="' + escHtml(event.title) + '" class="event-card-featured__image">' : '') +
+            '<div class="event-card-featured__body">' +
+              '<h3 class="event-card-featured__title">' + escHtml(event.title) + '</h3>' +
+              '<div class="event-card-featured__meta">' + meta + '</div>' +
+              (event.description ? '<p class="event-card-featured__description">' + escHtml(event.description) + '</p>' : '') +
+              '<span class="event-card-featured__cta">Get Tickets →</span>' +
+            '</div>' +
+          '</a>'
+        );
+      } else {
+        return (
+          '<div class="event-card-featured">' +
+            (imgSrc ? '<img src="' + escHtml(imgSrc) + '" alt="' + escHtml(event.title) + '" class="event-card-featured__image">' : '') +
+            '<div class="event-card-featured__body">' +
+              '<h3 class="event-card-featured__title">' + escHtml(event.title) + '</h3>' +
+              '<div class="event-card-featured__meta">' + meta + '</div>' +
+              (event.description ? '<p class="event-card-featured__description">' + escHtml(event.description) + '</p>' : '') +
+            '</div>' +
+          '</div>'
+        );
+      }
+    }).join('');
   }
 
   // ── Render: Archive Grid ──────────────────────────────────────────────────
