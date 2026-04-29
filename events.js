@@ -42,7 +42,7 @@
 
   // ── GROQ query ────────────────────────────────────────────────────────────
   const query = encodeURIComponent(
-    '*[_type == "event" && published == true] | order(eventDate desc) {' +
+    '*[_type == "event" && published == true] | order(eventDate asc) {' +
       '_id, title, status, eventDate, location, ' +
       '"coverImage": coverImage.asset, ' +
       '"thumbImage": thumbImage.asset, ' +
