@@ -62,8 +62,34 @@
     })
     .then(function (data) {
       const events = data.result || [];
-      const featured = events.filter(function (e) { return e.status === 'featured'; });
-      const archived = events.filter(function (e) { return e.status === 'archived'; });
+
+      // Linktree specific order for Featured events
+      const linktreeOrder = [
+        "South House vs Naija House - Say Twin Edition @ Elsewhere (05/02)",
+        "The South House After Party - Say Twin (05/02) @ 3 Dollar Bill",
+        "South House vs Naija House - Cinco De Mayo wknd @ Johnny Cabron’s (05/01)",
+        "South House vs Naija House Night Party @ Rosemary Beauty & Queen (05/08)",
+        "South House vs Naija House Day Party @ El Malo (05/09)",
+        "The South House After Party at Knock House Music - Atlanta (10pm - 3am)",
+        "Clock It - An After Work Happy Hour Series in LES (05/15)",
+        "South House vs Naija House Night Party @ Strand - D.C. (05/15)",
+        "South House vs Naija House Night Party @ The Pearl - Toronto (05/16)"
+      ];
+
+      const featured = events
+        .filter(function (e) { return e.status === 'featured'; })
+        .sort(function (a, b) {
+          const indexA = linktreeOrder.indexOf(a.title);
+          const indexB = linktreeOrder.indexOf(b.title);
+          if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+          if (indexA !== -1) return -1;
+          if (indexB !== -1) return 1;
+          return new Date(a.eventDate) - new Date(b.eventDate);
+        });
+
+      const archived = events
+        .filter(function (e) { return e.status === 'archived'; })
+        .sort(function (a, b) { return new Date(b.eventDate) - new Date(a.eventDate); });
 
       if (featured.length > 0) renderFeatured(featured.slice(0, 10));
       else clearZone('featured-events-zone', 'No featured events at the moment.');
